@@ -1,4 +1,4 @@
 # uploadFile
    #用HTML5的FileReader对象和canvas标签实现文件上传的文件压缩/预览的小插件.有待整理完善..(-_-)
   
-  <a href="http://htmlpreview.github.io/?https://github.com/zhangjt/uploadFile/blob/master/index.html">看效果,请擢这里,在PC上看哦~</a>
+  <a href="http://htmlpreview.github.io/?https://github.com/zhangjt/uploadFile/blob/master/index.html">看效果,请擢这里~</a>
