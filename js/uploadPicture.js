@@ -15,7 +15,6 @@
 		//     console.log('图片太大了,重新上传小的吧');
 		//     elem.parentNode.reset();
 		// }
-
 		var isTrue=/image\/\w+/.test(this.type); //\w匹配字母数字或下划线
 		if (!isTrue) {
 		    console.log('请上传图片文件');
@@ -68,7 +67,7 @@
 		    _this.elem.parentNode.appendChild(imgCanvas);
 		    //到这一步,已经把图片压缩好,可以直接提交压缩后的图片base64编码形式到服务器.
 
-		    //继续下一步,将转成ASCII数据→类型数组Uint8Array→blob对象的图片文件
+		    //继续下一步,将转成ASCII数据→类型数组Uint8Array→blob对象的图片文件,后再提交到服务器
 		    //提交form表单的准备:
 		    var strB=imgCanvas.src.split(',')[1];
 		    //Base64编码转成ASCII编码
