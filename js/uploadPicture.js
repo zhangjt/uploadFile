@@ -42,29 +42,35 @@
 		imgCanvas= new Image();  //压缩处理后的图片
 
 		img.src=src;  //原始图片
-		w=img.naturalWidth;
-		h=img.naturalHeight;
-		canvas.width=w;
-		canvas.height=h;
 
-		var maxHeight=600;  //自定义值600;
-		if (h>maxHeight) {
-		    //等比例缩放
-		    canvas.width*=maxHeight/h;
-		    canvas.height=maxHeight;
-		}
-		
-		canvas.setAttribute('style','border:1px solid pink;');
-		//drawImage()设置:一般img的顶点位置为(0,0),宽高为原画的宽高,canvas的宽高为原图缩放倍数后的宽高,不然出现蜜汁现象;
-		cxt.drawImage(img,0,0,w,h,0,0,canvas.width,canvas.height);
 
 		img.onload=function(){ 
+
+			w=this.naturalWidth;
+			h=this.naturalHeight;
+			// document.body.appendChild(this);
+			canvas.width=w;
+			canvas.height=h;
+
+			var maxHeight=1500;  //自定义值600;
+			if (h>maxHeight) {
+			    //等比例缩放
+			    canvas.width*=maxHeight/h;
+			    canvas.height=maxHeight;
+			}
+			
+			canvas.setAttribute('style','border:1px solid pink;');
+			//drawImage()设置:一般img的顶点位置为(0,0),宽高为原画的宽高,canvas的宽高为原图缩放倍数后的宽高,不然出现蜜汁现象;
+			cxt.drawImage(img,0,0,w,h,0,0,canvas.width,canvas.height);
+
+
 		    //读取canvas画布上图片的数据,赋值到新图片对象。其默认是png格式(输出的base64,较原图片size还要大).原图为jpeg输出也是jpeg的话,图片大小(较原图片)缩小一倍多,但是若原图片是png格式的有透明像素的部分的话,直接转成jpeg会黑化,所以最好是原格式转;第二参数(图片质量)一般为0.92,改变值不会影响图片大小.
 		    imgCanvas.src=canvas.toDataURL(type,0.92);
 		    //canvas.toDataURL 返回的默认格式是 image/png,这里输入原图片格式type
 		    imgCanvas.setAttribute('class','preview');
 		
-		    _this.elem.parentNode.appendChild(imgCanvas);
+		    var view=document.querySelector('.view');
+		    view.appendChild(imgCanvas);
 		    //到这一步,已经把图片压缩好,可以直接提交压缩后的图片base64编码形式到服务器.
 
 		    //继续下一步,将转成ASCII数据→类型数组Uint8Array→blob对象的图片文件,后再提交到服务器
@@ -108,16 +114,7 @@
 	},
 	clearImg:function(){
 	
-		var imgs=document.getElementsByTagName('img');
-		if (imgs) {
-			for (var i = 0; i < imgs.length; i++) {
-				var img=imgs[i];
-				var imgClass=img.getAttribute('class');
-				if (imgClass=="preview") {
-					console.log(imgClass);
-					img.parentNode.removeChild(img);
-				}	
-			}
-		}
+		var view=document.querySelector('.view');
+		view.innerHTML='';
 	}
 };
