@@ -61,6 +61,9 @@
 			
 			canvas.setAttribute('style','border:1px solid pink;');
 			//drawImage()设置:一般img的顶点位置为(0,0),宽高为原画的宽高,canvas的宽高为原图缩放倍数后的宽高,不然出现蜜汁现象;
+			// setIntervel(function(){
+			// 	cxt.drawImage(img,0,0,w,h,0,0,canvas.width,canvas.height);
+			// },20);
 			cxt.drawImage(img,0,0,w,h,0,0,canvas.width,canvas.height);
 
 
@@ -68,7 +71,7 @@
 		    imgCanvas.src=canvas.toDataURL(type,0.92);
 		    //canvas.toDataURL 返回的默认格式是 image/png,这里输入原图片格式type
 		    imgCanvas.setAttribute('class','preview');
-		
+	
 		    var view=document.querySelector('.view');
 		    view.appendChild(imgCanvas);
 		    //到这一步,已经把图片压缩好,可以直接提交压缩后的图片base64编码形式到服务器.
