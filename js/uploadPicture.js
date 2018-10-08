@@ -72,7 +72,7 @@
 		    //canvas.toDataURL 返回的默认格式是 image/png,这里输入原图片格式type
 		    imgCanvas.setAttribute('class','preview');
 	
-		    var view=document.querySelector('.view');
+		    var view=document.querySelector('#view');
 		    view.appendChild(imgCanvas);
 		    //到这一步,已经把图片压缩好,可以直接提交压缩后的图片base64编码形式到服务器.
 
@@ -117,7 +117,7 @@
 	},
 	clearImg:function(){
 	
-		var view=document.querySelector('.view');
+		var view=document.querySelector('#view');
 		view.innerHTML='';
 	}
 };
